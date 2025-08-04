@@ -8,11 +8,12 @@ class Player:
         self.mana = 50+(level * 5)
         self.strength = 10 + (level * 2)
         self.defense = 5 + (level * 1)
-        self.armor_check = {'helmet':('helmet' is in self.gear),
-                            'chestplate':('chestplate' is in self.gear),
-                            'boots':('boots' is in self.gear)
-                            'leggings':('leggings' is in self.gear)
-                            }
+        self.armor_check = {
+            'helmet': ('helmet' in self.gear),
+            'chestplate': ('chestplate' in self.gear),
+            'boots': ('boots' in self.gear),
+            'leggings': ('leggings' in self.gear)
+        }
 sword = {'name': 'Sword', 'type': 'weapon', 'damage': random.randint(7,11), 'level_required': 1}
 shield = {'name': 'Shield', 'type': 'armor', 'defense': 0.8, 'level_required': 1}
 spear = {'name': 'Spear', 'type': 'weapon', 'damage': random.randint(5,15), 'level_required': 2}
@@ -34,6 +35,22 @@ class spider:
         self.defense = 2 + (level * 0.5)
     def attack(self, player):
         if random.random() > player.defense / (player.defense + self.damage):
-            damage_dealt = (self.damage - player.defense)*((player.armor_check['helmet']helmet['defense'])+(player.armor_check['chestplate']*chestplate['defense'])+(player.armor_check['boots']*boots['defense'])+(player.armor_check['leggings']*leggings['defense']))/(player.armor_check['helmet'] + player.armor_check['chestplate'] + player.armor_check['boots'] + player.armor_check['leggings'])
+            # Calculate total armor defense
+            total_armor = 0
+            armor_count = 0
+            if player.armor_check['helmet']:
+                total_armor += helmet['defense']
+                armor_count += 1
+            if player.armor_check['chestplate']:
+                total_armor += chestplate['defense']
+                armor_count += 1
+            if player.armor_check['boots']:
+                total_armor += boots['defense']
+                armor_count += 1
+            if player.armor_check['leggings']:
+                total_armor += leggings['defense']
+                armor_count += 1
+            avg_armor = total_armor / armor_count if armor_count > 0 else 1
+            damage_dealt = (self.damage - player.defense) * avg_armor
             player.health -= damage_dealt
             print(f"{self.__class__.__name__} attacks {player.name} for {damage_dealt:.2f} damage.")
