@@ -34,7 +34,7 @@ def change_mks():
 def delete_rec():
     f = open('data.dat', 'rb')
     f1 = open('temp.dat', 'wb')
-    id = int(input("Enter ID to modify marks: "))
+    id = int(input("Enter ID to delete marks: "))
     try:
         while True:
             rec = pickle.load(f)
