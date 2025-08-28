@@ -1,3 +1,5 @@
+import pickle
+import csv
 f = open('w.txt', 'w')
 f.write('Hello, World!!!\nhello, Python!!!\nhello, Python!!!\nhello, Python!!!\nhello, Python!!!')
 f.close()
@@ -7,3 +9,14 @@ z = f.tell()
 f.seek(z-1)
 print(f.read(1))
 print(f.read(1))
+f.close()
+f = open('w.csv','w',newline='')
+writer = csv.writer(f, delimiter='|')
+writer.writerow(['rajdeep', 'sarkar', '23'])
+f.close()
+f = open('w.csv','r')
+reader = csv.reader(f, delimiter='|')
+for row in reader:
+    print(row)
+f.close()
+f = open('w.dat','a')
