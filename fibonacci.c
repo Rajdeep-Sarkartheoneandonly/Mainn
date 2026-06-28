@@ -1,10 +1,8 @@
 #include <stdio.h>
+#include <sys/types.h>
 
 int fibonacci(int n) {
-    if (n <= 1) {
-        return n;
-    }
-    return fibonacci(n - 1) + fibonacci(n - 2);
+    return (n <= 1) ? n : fibonacci(n - 1) + fibonacci(n - 2);
 }
 
 int main() {
@@ -17,7 +15,9 @@ int main() {
             printf("Invalid input. Please enter a positive integer.\n");
         }
     }
-
-    printf("Fibonacci number at position %d is %d\n", n, fibonacci(n-1));
+    for (int i = 0; i < n; i++)
+    {
+        printf("Fibonacci number at position %d is %d\n", i + 1, fibonacci(i));
+    }
     return 0;
 }
