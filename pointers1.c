@@ -8,6 +8,6 @@ int main()
     int *students;
     int numstudents = 12;
     students = calloc(numstudents, sizeof(students));
-    printf("%d\n", numstudents * sizeof(*students));
+    printf("%zu\n", numstudents * sizeof(*students));
     return 0;
 }
