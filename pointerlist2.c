@@ -17,7 +17,7 @@ void addtolist(struct list *mylist, char *item)
         char **tmp = realloc(mylist->data, newsize * sizeof(char *));
         if (tmp == NULL)
         {
-            printf("Memory allocation failed.\n");
+            printf("Memory allocation failed!\n");
             return;
         }
         mylist->data = tmp;
@@ -36,7 +36,7 @@ int main()
     mylist.data = malloc(mylist.size * sizeof(char *));
     if (mylist.data == NULL)
     {
-        printf("Memory allocation failed.\n");
+        printf("Memory allocation failed!\n");
         return 1;
     }
     amount = 4;
@@ -48,7 +48,7 @@ int main()
         char *itemptr = malloc(strlen(item) + 1);
         if (itemptr == NULL)
         {
-            printf("Memory allocation failed.\n");
+            printf("Memory allocation failed!\n");
             for (int k = 0; k < mylist.numitems; k++)
             {
                 free(mylist.data[k]);
