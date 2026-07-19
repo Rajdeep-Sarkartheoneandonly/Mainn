@@ -7,9 +7,17 @@ public class arraylists {
         cars.add("Volvo");
         System.out.println(cars);
         Scanner inputObj = new Scanner(System.in);
-        String carinput = inputObj.nextLine();
-        cars.add(carinput);
-        System.out.println(cars);
+        String carinput = " z";
+        while (!carinput.isEmpty()) {
+            carinput = inputObj.nextLine();
+            if (!carinput.isEmpty()) {
+                cars.add(carinput);
+                System.out.println(cars);
+            }
+        }
+        for (String car : cars) {
+            System.out.println(car);
+        }
         inputObj.close();
     }
 }
